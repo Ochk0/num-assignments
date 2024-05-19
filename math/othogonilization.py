@@ -23,11 +23,38 @@ def calculateV(x):
         orth.append(c)
     return orth
 
-A = [[1, 3, 1], [1, 2, 0], [-1, 0, 1], [-1, 1, 0]]
+def orthBasis(A):
+    result = []
+    for matrix in A:
+        sum = 0
+        for num in matrix:
+            sum += num**2
+        sum = sum ** 0.5
+        t = []
+        for i in range(len(matrix)):
+            t.append( matrix[i] / sum )
+        result.append(t)
+    return result
+
+# A = [[1, 3, 1], [1, 2, 0], [-1, 0, 1], [-1, 1, 0]]
+# A = [[1, 0, 0], 
+#      [0, 1, 0], 
+#      [0, 0, 1]]
+# A = [[1, 2, 3], 
+#      [4, 5, 6], 
+#      [7, 8, 9], 
+#      [10, 11, 12]]
+
+A = [
+    [1, 8, 0],
+    [2, 1, 0],
+    [0, -6, 1]
+]
 
 def __main__():
     x = findX(A)
     orth = calculateV(x)
     print(orth)
+    print(orthBasis(orth))
 
 __main__()
